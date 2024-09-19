@@ -1,0 +1,227 @@
+﻿@model SistemaWebMedida.ViewsModels.UsuarioViewModel;
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrarse</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-image: url('/imagenes/ImagenFondo.jpeg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+
+        .register-form {
+            background: rgba(255, 255, 255, 0.8); /* Fondo blanco semi-transparente */
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 100%;
+            max-width: 600px;
+        }
+
+            .register-form h2 {
+                text-align: center;
+                margin-bottom: 20px;
+            }
+
+        .input_box {
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+            .input_box input {
+                width: 100%;
+                padding: 10px 35px;
+                border-radius: 5px;
+                border: 1px solid #ddd;
+                font-size: 16px;
+            }
+
+            .input_box i {
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                color: #aaa;
+            }
+
+            .input_box .email {
+                left: 10px;
+            }
+
+            .input_box .password {
+                left: 10px;
+            }
+
+            .input_box .pw_hide {
+                right: 10px;
+                cursor: pointer;
+            }
+
+        .option_field {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+            .option_field .checkbox {
+                display: flex;
+                align-items: center;
+            }
+
+                .option_field .checkbox input {
+                    margin-right: 10px;
+                }
+
+            .option_field .forgot_pw {
+                color: #FF9317;
+            }
+
+        .button {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #FF9317;
+            color: #fff;
+            font-size: 16px;
+        }
+
+        .register_signup {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+            .register_signup a {
+                color: #FF9317;
+                text-decoration: none;
+            }
+    </style>
+</head>
+<body>
+    <div class="register-form">
+        <form asp-controller="Acceso" asp-action="Registrarse" method="post">
+            <h2>Registrarse</h2>
+
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <div class="input_box">
+                        <input type="text" placeholder="Nombres..." required asp-for="Nombres">
+                        <i class="fas fa-user email"></i>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="input_box">
+                        <input type="text" placeholder="Apellidos..." required asp-for="Apellidos">
+                        <i class="fas fa-user email"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <div class="input_box">
+                        <input type="date" placeholder="Fecha de nacimiento..." required asp-for="FechaNacimiento">
+                        <i class="fas fa-calendar-alt email"></i>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="input_box">
+                        <input type="number" placeholder="Número de teléfono..." required asp-for="NumeroTelefono">
+                        <i class="fas fa-phone email"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-md-12">
+                    <div class="input_box">
+                        <input type="text" placeholder="Dirección..." required asp-for="Direccion">
+                        <i class="fas fa-home email"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-md-12">
+                    <div class="input_box">
+                        <input type="text" placeholder="Correo..." required asp-for="CorreoUsuario">
+                        <i class="fas fa-envelope email"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <div class="input_box">
+                        <input type="password" placeholder="Contraseña..." required asp-for="Clave" id="password">
+                        <i class="fas fa-lock password"></i>
+                        <i class="fas fa-eye-slash pw_hide" id="togglePassword1"></i>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="input_box">
+                        <input type="password" placeholder="Confirmar contraseña..." required asp-for="ConfirmarClave" id="confirmPassword">
+                        <i class="fas fa-lock password"></i>
+                        <i class="fas fa-eye-slash pw_hide" id="togglePassword2"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="d-grid gap-2 mb-3">
+                <button class="button" type="submit"><strong>Registrarse</strong></button>
+            </div>
+
+            @if (ViewData["Mensaje"] != null)
+            {
+                <div class="alert alert-danger" role="alert">
+                    @ViewData["Mensaje"]
+                </div>
+            }
+
+            <div class="register_signup">
+                ¿Ya tienes una cuenta? <a asp-controller="Acceso" asp-action="Login">Iniciar Sesión</a>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const togglePassword1 = document.getElementById('togglePassword1');
+            const passwordInput = document.getElementById('password');
+
+            togglePassword1.addEventListener('click', function () {
+                const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+                passwordInput.setAttribute('type', type);
+                this.classList.toggle('fa-eye-slash');
+                this.classList.toggle('fa-eye');
+            });
+
+            const togglePassword2 = document.getElementById('togglePassword2');
+            const confirmPasswordInput = document.getElementById('confirmPassword');
+
+            togglePassword2.addEventListener('click', function () {
+                const type = confirmPasswordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+                confirmPasswordInput.setAttribute('type', type);
+                this.classList.toggle('fa-eye-slash');
+                this.classList.toggle('fa-eye');
+            });
+        });
+    </script>
+</body>
+</html>

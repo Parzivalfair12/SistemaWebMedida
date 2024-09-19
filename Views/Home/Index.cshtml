@@ -1,0 +1,701 @@
+﻿@using System.Security.Claims;
+@{
+    ViewData["Title"] = "Home Page";
+}
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
+
+<style>
+    .input_box {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+        .input_box input {
+            width: 100%;
+            max-width: 200px;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            font-size: 16px;
+        }
+
+    .card {
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        overflow: hidden;
+    }
+
+    .card-body {
+        padding: 20px;
+    }
+
+    .card-title {
+        margin-bottom: 0;
+    }
+
+    /* Alineación de las filas de inputs */
+    .row-center {
+        display: flex;
+        justify-content: center;
+    }
+
+    /* Estilos para el botón */
+    #toggleButton {
+        padding: 10px 35px;
+        font-size: 16px;
+        color: white;
+        border: none;
+        cursor: pointer;
+        border-radius: 25px;
+        transform: translateY(3px);
+    }
+
+        /* Estilo cuando el botón está en estado "Off" */
+        #toggleButton.off {
+            background-color: red;
+        }
+
+        /* Estilo cuando el botón está en estado "On" */
+        #toggleButton.on {
+            background-color: green;
+        }
+</style>
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-sm-3">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Medida de CO2 <br /> (%)</h5>
+                    <br />
+                    <p class="card-text" id="co2Value" style="text-align:center;"></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-3">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Medida de presión interna (mbar)</h5>
+                    <br />
+                    <p class="card-text" id="presionDifValue" style="text-align:center;"></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-3">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Medida de presión atmosférica (mbar)</h5>
+                    <br />
+                    <p class="card-text" id="presionAtmValue" style="text-align:center;"></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-3">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Oxígeno <br /> (%)</h5>
+                    <br />
+                    <p class="card-text" id="oxigenoValue" style="text-align:center;"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container mt-4">
+    <div class="row row-left">
+        <div class="col-sm-3 input_box" style="padding-top:40px;">
+            <button class="btn btn-info" id="btnGuardar">Guardar</button>
+        </div>
+        <div class="col-sm-3 input_box">
+            <h4>Peso (Kg)</h4>
+            <input id="InpPeso" type="text">
+        </div>
+        <div class="col-sm-3 input_box">
+            <h4>Volumen libre cm³</h4>
+            <input id="InpVolumen" type="text">
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row row-left">        
+        <div class="col-sm-3 input_box">
+            
+        </div>
+        <div class="col-sm-3 input_box">
+            <h4>Fecha</h4>
+            <input id="InpFecha" type="date">
+        </div>
+        <div class="col-sm-3 input_box">
+            <H4>Hora Inicial</H4>
+            <input id="InpHoraIni" type="time">
+        </div>
+        <div class="col-sm-3 input_box">
+            <H4>Hora Final</H4>
+            <input id="InpHoraFin" type="time">
+        </div>
+    </div>
+</div>
+
+<br />
+
+<button class="btn btn-info" style="border:none;border-radius: 25px;padding: 10px 10px;font-size: 16px;color: white;cursor: pointer;" id="DescarExcel">Descargar Excel</button>
+<button id="toggleButton" style="background-color: green;" class="off">Encender</button>
+
+<div class="container mt-3">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="panel panel-default">
+                <div class="panel-heading"><h4>Presión atmosferica</h4></div>
+                <div class="panel-body">
+                    <canvas id="myLineChart" width="80" height="20"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container mt-3">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="panel panel-default">
+                <div class="panel-heading"><h4>Presión diferencial</h4></div>
+                <div class="panel-body">
+                    <canvas id="ChartDif" width="80" height="20"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container mt-3">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="panel panel-default">
+                <div class="panel-heading"><h4>Co2</h4></div>
+                <div class="panel-body">
+                    <canvas id="ChartCo2" width="80" height="20"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container mt-3">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="panel panel-default">
+                <div class="panel-heading"><h4>Temperatura</h4></div>
+                <div class="panel-body">
+                    <canvas id="ChartTemp" width="80" height="20"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container mt-3">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="panel panel-default">
+                <div class="panel-heading"><h4>Oxigeno</h4></div>
+                <div class="panel-body">
+                    <canvas id="ChartOxi" width="80" height="20"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts {
+    <script>
+        var myLineChartPresion;
+        var myLineChartDif;
+        var myLineChartCo2;
+        var myLineChartTemp;
+        var myLineChartOxi;
+
+        var intervalId; // Variable para almacenar el ID del intervalo
+        var isOn = false; // Estado inicial del botón (apagado)
+
+        // Función para controlar el botón
+        function toggleButton() {
+            var button = document.getElementById("toggleButton");
+            button.style.backgroundColor = "";
+
+            if (isOn) {
+                clearInterval(intervalId); // Detener el intervalo
+                button.textContent = "Encender"; // Cambiar el texto del botón
+                // button.classList.remove("off");
+                // button.classList.add("on"); // Cambiar el color a rojo
+                button.style.backgroundColor = "Green";
+            } else {
+                fetchAndRenderData(); // Ejecutar inmediatamente cuando se enciende
+                intervalId = setInterval(fetchAndRenderData, 5000); // Iniciar el intervalo
+                button.textContent = "Apagar"; // Cambiar el texto del botón
+                // button.classList.remove("on");
+                // button.classList.add("off"); // Cambiar el color a verde
+                button.style.backgroundColor = "Red";
+            }
+
+            isOn = !isOn; // Alternar el estado
+        }
+
+        // Asignar la función al evento de clic del botón
+        document.getElementById("toggleButton").addEventListener("click", toggleButton);
+
+        function fetchAndRenderData() {
+            // Llamada AJAX para ReportePresion
+            jQuery.ajax({
+                url: '@Url.Action("ReportePresion", "Home")',
+                type: "GET",
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                success: function (data) {
+                    var ArrayPresionAtm = [];
+                    var ArrayId = [];
+
+                    for (var i = 0; i < data.length; i++) {
+                        ArrayPresionAtm.push(data[i].presionAtm);
+                        var date = new Date(data[i].fecha);
+                        var formattedDate = date.toLocaleString('es-ES', {
+                            day: '2-digit',
+                            month: '2-digit',
+                            year: 'numeric',
+                            hour: '2-digit',
+                            minute: '2-digit',
+                            second: '2-digit'
+                        }).replace(',', ' -');
+                        ArrayId.push(formattedDate);
+                    }
+
+                    var ctx = document.getElementById('myLineChart').getContext('2d');
+
+                    if (myLineChartPresion) {
+                        myLineChartPresion.destroy();
+                    }
+
+                    myLineChartPresion = new Chart(ctx, {
+                        type: 'line',
+                        data: {
+                            labels: ArrayId,
+                            datasets: [{
+                                label: 'Presión atmosférica',
+                                data: ArrayPresionAtm,
+                                backgroundColor: '#FE712C',
+                                borderColor: '#FE712C',
+                                borderWidth: 1,
+                                fill: false,
+                                tension: 0.5,
+                                cubicInterpolationMode: 'default'
+                            }]
+                        },
+                        options: {
+                            scales: {
+                                x: { grid: { display: false } },
+                                y: {
+                                    grid: { display: false },
+                                    ticks: {
+                                        callback: function (value, index, values) {
+                                            return value.toFixed(2);
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    });
+                },
+                error: function (error) {
+                    console.log('Error fetching Presion data:', error);
+                }
+            });
+
+            // Llamada AJAX para ReportePresionDif
+            jQuery.ajax({
+                url: '@Url.Action("ReportePresionDif", "Home")',
+                type: "GET",
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                success: function (data) {
+                    var ArrayPresionDif = [];
+                    var ArrayId = [];
+
+                    for (var i = 0; i < data.length; i++) {
+                        ArrayPresionDif.push(data[i].presionDif);
+                        var date = new Date(data[i].fecha);
+                        var formattedDate = date.toLocaleString('es-ES', {
+                            day: '2-digit',
+                            month: '2-digit',
+                            year: 'numeric',
+                            hour: '2-digit',
+                            minute: '2-digit',
+                            second: '2-digit'
+                        }).replace(',', ' -');
+                        ArrayId.push(formattedDate);
+                    }
+
+                    var ctx = document.getElementById('ChartDif').getContext('2d');
+
+                    if (myLineChartDif) {
+                        myLineChartDif.destroy();
+                    }
+
+                    myLineChartDif = new Chart(ctx, {
+                        type: 'line',
+                        data: {
+                            labels: ArrayId,
+                            datasets: [{
+                                label: 'Presión diferencial',
+                                data: ArrayPresionDif,
+                                backgroundColor: '#FE712C',
+                                borderColor: '#FE712C',
+                                borderWidth: 1,
+                                fill: false,
+                                tension: 0.5,
+                                cubicInterpolationMode: 'default'
+                            }]
+                        },
+                        options: {
+                            scales: {
+                                x: { grid: { display: false } },
+                                y: {
+                                    grid: { display: false },
+                                    ticks: {
+                                        callback: function (value, index, values) {
+                                            return value.toFixed(2);
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    });
+                },
+                error: function (error) {
+                    console.log('Error fetching PresionDif data:', error);
+                }
+            });
+
+            // Llamada AJAX para ReporteCo2
+            jQuery.ajax({
+                url: '@Url.Action("ReporteCo2", "Home")',
+                type: "GET",
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                success: function (data) {
+                    var ArrayCo2 = [];
+                    var ArrayId = [];
+
+                    for (var i = 0; i < data.length; i++) {
+                        ArrayCo2.push(data[i].co2);
+                        var date = new Date(data[i].fecha);
+                        var formattedDate = date.toLocaleString('es-ES', {
+                            day: '2-digit',
+                            month: '2-digit',
+                            year: 'numeric',
+                            hour: '2-digit',
+                            minute: '2-digit',
+                            second: '2-digit'
+                        }).replace(',', ' -');
+                        ArrayId.push(formattedDate);
+                    }
+
+                    var ctx = document.getElementById('ChartCo2').getContext('2d');
+
+                    if (myLineChartCo2) {
+                        myLineChartCo2.destroy();
+                    }
+
+                    myLineChartCo2 = new Chart(ctx, {
+                        type: 'line',
+                        data: {
+                            labels: ArrayId,
+                            datasets: [{
+                                label: 'CO2',
+                                data: ArrayCo2,
+                                backgroundColor: '#FE712C',
+                                borderColor: '#FE712C',
+                                borderWidth: 1,
+                                fill: false,
+                                tension: 0.5,
+                                cubicInterpolationMode: 'default'
+                            }]
+                        },
+                        options: {
+                            scales: {
+                                x: { grid: { display: false } },
+                                y: {
+                                    grid: { display: false },
+                                    ticks: {
+                                        callback: function (value, index, values) {
+                                            return value.toFixed(2);
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    });
+                },
+                error: function (error) {
+                    console.log('Error fetching CO2 data:', error);
+                }
+            });
+
+            // Llamada AJAX para ReporteTemp
+            jQuery.ajax({
+                url: '@Url.Action("ReporteTemperatura", "Home")',
+                type: "GET",
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                success: function (data) {
+                    var ArrayTemp = [];
+                    var ArrayId = [];
+
+                    for (var i = 0; i < data.length; i++) {
+                        ArrayTemp.push(data[i].temperatura);
+                        var date = new Date(data[i].fecha);
+                        var formattedDate = date.toLocaleString('es-ES', {
+                            day: '2-digit',
+                            month: '2-digit',
+                            year: 'numeric',
+                            hour: '2-digit',
+                            minute: '2-digit',
+                            second: '2-digit'
+                        }).replace(',', ' -');
+                        ArrayId.push(formattedDate);
+                    }
+
+                    var ctx = document.getElementById('ChartTemp').getContext('2d');
+
+                    if (myLineChartTemp) {
+                        myLineChartTemp.destroy();
+                    }
+
+                    myLineChartTemp = new Chart(ctx, {
+                        type: 'line',
+                        data: {
+                            labels: ArrayId,
+                            datasets: [{
+                                label: 'Temperatura',
+                                data: ArrayTemp,
+                                backgroundColor: '#FE712C',
+                                borderColor: '#FE712C',
+                                borderWidth: 1,
+                                fill: false,
+                                tension: 0.5,
+                                cubicInterpolationMode: 'default'
+                            }]
+                        },
+                        options: {
+                            scales: {
+                                x: { grid: { display: false } },
+                                y: {
+                                    grid: { display: false },
+                                    ticks: {
+                                        callback: function (value, index, values) {
+                                            return value.toFixed(2);
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    });
+                },
+                error: function (error) {
+                    console.log('Error fetching Temperatura data:', error);
+                }
+            });
+
+            // Llamada AJAX para ReporteOxi
+            jQuery.ajax({
+                url: '@Url.Action("ReporteOxigeno", "Home")',
+                type: "GET",
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                success: function (data) {
+                    var ArrayOxi = [];
+                    var ArrayId = [];
+
+                    for (var i = 0; i < data.length; i++) {
+                        ArrayOxi.push(data[i].oxigeno);
+                        var date = new Date(data[i].fecha);
+                        var formattedDate = date.toLocaleString('es-ES', {
+                            day: '2-digit',
+                            month: '2-digit',
+                            year: 'numeric',
+                            hour: '2-digit',
+                            minute: '2-digit',
+                            second: '2-digit'
+                        }).replace(',', ' -');
+                        ArrayId.push(formattedDate);
+                    }
+
+                    var ctx = document.getElementById('ChartOxi').getContext('2d');
+
+                    if (myLineChartOxi) {
+                        myLineChartOxi.destroy();
+                    }
+
+                    myLineChartOxi = new Chart(ctx, {
+                        type: 'line',
+                        data: {
+                            labels: ArrayId,
+                            datasets: [{
+                                label: 'Oxígeno',
+                                data: ArrayOxi,
+                                backgroundColor: '#FE712C',
+                                borderColor: '#FE712C',
+                                borderWidth: 1,
+                                fill: false,
+                                tension: 0.5,
+                                cubicInterpolationMode: 'default'
+                            }]
+                        },
+                        options: {
+                            scales: {
+                                x: { grid: { display: false } },
+                                y: {
+                                    grid: { display: false },
+                                    ticks: {
+                                        callback: function (value, index, values) {
+                                            return value.toFixed(2);
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    });
+                },
+                error: function (error) {
+                    console.log('Error fetching Oxígeno data:', error);
+                }
+            });
+
+            // Aquí podrías agregar actualizaciones de otros elementos como el valor de CO2, presión, etc.
+            // Ejemplo para actualizar los valores mostrados:
+            jQuery.ajax({
+                url: '@Url.Action("UltimoRegistro", "Home")',
+                type: "GET",
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                success: function (data) {
+                    document.getElementById("co2Value").textContent = data.co2.toFixed(2);
+                    document.getElementById("presionDifValue").textContent = data.presionDif.toFixed(2);
+                    document.getElementById("presionAtmValue").textContent = data.presionAtm.toFixed(2);
+                    document.getElementById("oxigenoValue").textContent = data.oxigeno.toFixed(2);
+                },
+                error: function (error) {
+                    console.log('Error fetching latest data:', error);
+                }
+            });
+        }
+
+        $('#DescarExcel').click(function () {
+            // Hacer una solicitud AJAX para obtener el archivo
+            $.ajax({
+                url: '@Url.Action("DescargarExcel", "Home")',
+                type: 'GET',
+                xhrFields: {
+                    responseType: 'blob' // Importante para manejar la respuesta como un archivo
+                },
+                success: function (data) {
+                    // Crear un enlace temporal para la descarga
+                    var link = document.createElement('a');
+                    link.href = window.URL.createObjectURL(data);
+                    link.download = 'Reporte.xlsx'; // Nombre del archivo descargado
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                },
+                error: function (xhr, status, error) {
+                    console.error('Error al descargar el archivo:', error);
+                }
+            });
+        });
+
+
+      
+         $('#btnGuardar').click(function() {
+            debugger;
+
+            // Obtener los valores de los campos de entrada
+            var peso = $('#InpPeso').val();
+            var volumen = $('#InpVolumen').val();
+            var fecha = $('#InpFecha').val();
+            var horaini = $('#InpHoraIni').val();
+            var horafin = $('#InpHoraFin').val();
+
+            // Validación de campos
+            if (!peso || !volumen || !fecha || !horaini || !horafin) {
+                Swal.fire({
+                        title: 'Alerta!!',
+                        text: 'Por favor complete todos los campos.',
+                        icon: 'warning',
+                        confirmButtonText: 'OK'
+                        });
+                return;
+            }
+
+            // Formato de fecha (si es necesario)
+            var fechaFormateada = new Date(fecha).toISOString(); // Convierte la fecha a formato ISO 8601
+
+            // Configuración de la solicitud AJAX
+            $.ajax({
+                url: '@Url.Action("ActualizarValores", "Home")', // Asegúrate de que esta URL sea correcta
+                type: 'POST',
+                contentType: 'application/json; charset=utf-8',
+                data: JSON.stringify({
+                    peso: peso,
+                    volumen: volumen,
+                    fecha: fechaFormateada,
+                    horaini: horaini,
+                    horafin: horafin
+                }),
+                dataType: 'json',
+                success: function(data) {
+                    // Manejar la respuesta exitosa
+                    if (data.success) {
+                        Swal.fire({
+                        title: 'Éxito',
+                        text: 'Valores actualizados correctamente.',
+                        icon: 'success',
+                        confirmButtonText: 'OK'
+                        });
+
+                    } else {
+                        Swal.fire({
+                        title: 'Error',
+                        text: 'Contacte con administrador.',
+                        icon: 'danger',
+                        confirmButtonText: 'OK'
+                        });
+                    }
+                },
+                error: function(xhr, status, error) {
+                    // Manejar errores de la solicitud AJAX
+                    console.error('Error de conexión:', status, error);
+                    alert('Error de conexión: ' + error);
+                }
+            });
+        });
+
+
+
+    </script>
+}
+
+
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+

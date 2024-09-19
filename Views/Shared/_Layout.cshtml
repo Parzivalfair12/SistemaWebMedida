@@ -1,0 +1,119 @@
+﻿@using System.Security.Claims
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - SistemaWebMedida</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/SistemaWebMedida.styles.css" asp-append-version="true" />
+    <style>
+        body {
+            display: flex;
+        }
+
+        #sidebar {
+            width: 250px;
+            position: fixed;
+            top: 0;
+            left: -250px;
+            height: 100%;
+            background-color: #f8f9fa;
+            transition: all 0.3s;
+        }
+
+            #sidebar.active {
+                left: 0;
+            }
+
+        #content {
+            margin-left: 0;
+            width: 100%;
+            transition: margin-left 0.3s;
+        }
+
+        #sidebarCollapse {
+            margin-right: 15px;
+        }
+    </style>
+</head>
+<body>    
+    <div id="sidebar" style="background-color: #2B8180; padding: 20px; border-right: 2px solid #005f73;">
+        <div class="sidebar-header" style="text-align: center; margin-bottom: 20px;">
+            <h3 style="font-family: 'Times New Roman', serif; color: #fff;">Panel de Monitoreo de Datos</h3>
+        </div>
+        <ul class="list-unstyled components">
+            <li class="nav-item">
+                <a class="nav-link text-dark" href="https://drive.google.com/drive/folders/1ZxMRJjV9nkyo0VxDZ-FFGaQjnOAk99pV" onclick="window.open(this.href, '_blank'); return false;" style="font-size: 18px; padding: 10px 20px; border-radius: 5px; background-color: #e0f7fa;">
+                    <i class="fas fa-book"></i> Manual de usuario
+                </a>
+            </li>
+        </ul>
+        <ul class="list-unstyled components">
+            <li class="nav-item">
+                <a class="nav-link text-dark" href="https://drive.google.com/drive/folders/1aadSkw8ZvasQSojZV_RRV6tVLMtStEn6" onclick="window.open(this.href, '_blank'); return false;" style="font-size: 18px; padding: 10px 20px; border-radius: 5px; background-color: #e0f7fa;">
+                    <i class="fas fa-flask"></i> Como calcular volumen libre? 
+                </a>
+            </li>
+        </ul>
+        <ul class="list-unstyled components">
+            <li class="nav-item">
+                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Salir" style="font-size: 18px; padding: 10px 20px; border-radius: 5px; background-color: #e0f7fa;">
+                    <i class="fas fa-sign-out-alt"></i> Salir
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div id="content">
+        <header>
+            <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-light border-bottom box-shadow mb-3">                
+                <div class="container-fluid">
+                    <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                        <ul class="navbar-nav flex-grow-1">
+                            <li class="nav-item">
+                                <button type="button" id="sidebarCollapse" class="btn btn-light">
+                                    <span class="navbar-toggler-icon"></span>
+                                </button>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="text-center" style="margin-right: 24rem;">
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <h6 class="display-4">
+                                <strong>Bienvenido</strong>
+                                <strong>@User.Claims.Where(c => c.Type == ClaimTypes.Name).Select(c => c.Value).SingleOrDefault()</strong>
+                            </h6>
+                        }
+                    </div>
+                </div>                
+            </nav>
+        </header>
+        <div class="container">
+            <main role="main" class="pb-3">
+                @RenderBody()
+            </main>
+        </div>
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function () {
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar').toggleClass('active');
+                if ($('#sidebar').hasClass('active')) {
+                    $('#content').css('margin-left', '250px');
+                } else {
+                    $('#content').css('margin-left', '0');
+                }
+            });
+        });
+    </script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">

@@ -1,0 +1,383 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+https://go.microsoft.com/fwlink/?LinkID=208121.
+-->
+<Project>
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAOZG9tqg4Z0eFc4lpRMnfDAAAAAACAAAAAAAQZgAAAAEAACAAAADEwc6M1kDKlyMJlCTOzV8y48rtwCLbG0XWPSF4n8OjkgAAAAAOgAAAAAIAACAAAAClA2JxoqdDsmcTpo9wLlWMGjJxM/z6sc0u/NUNDQQllDAAAACxdzT4ilnb4tXbEiFiBsJuMX5Ij4uBKcuqsUBHGV+v09dEIzDShlVg/FNB29C42QxAAAAARwoVR87tmwX6B2eEDHIWK3uL37PHggsFrlpEbiohRve5tHD3OI+bk/jRjI8W1BsAKfCPRxm9AkWKHzMZw/65Jw==</EncryptedPassword>
+    <_PublishTargetUrl>ftp://155.254.244.27/www.SistemaWebMedida.somee.com</_PublishTargetUrl>
+    <History>True|2024-09-18T02:35:34.1760997Z||;True|2024-08-15T23:09:42.7489660-05:00||;True|2024-08-14T22:24:21.7084137-05:00||;True|2024-08-12T20:28:38.1721666-05:00||;True|2024-08-12T20:22:10.1819043-05:00||;</History>
+    <LastFailureDetails />
+  </PropertyGroup>
+  <ItemGroup>
+    <DestinationConnectionStrings Include="CadenaSQL">
+      <Value>Data Source=DBMEDIDA.mssql.somee.com%3bInitial Catalog=DBMEDIDA%3b user id=ParzivalFair_SQLLogin_1%3b pwd=ol7mybg2d9%3b TrustServerCertificate=True%3b</Value>
+    </DestinationConnectionStrings>
+  </ItemGroup>
+  <ItemGroup>
+    <File Include="appsettings.Development.json">
+      <publishTime>08/05/2024 20:20:49</publishTime>
+    </File>
+    <File Include="appsettings.json">
+      <publishTime>08/12/2024 20:12:44</publishTime>
+    </File>
+    <File Include="appsettings.production.json">
+      <publishTime>09/17/2024 21:31:20</publishTime>
+    </File>
+    <File Include="Aspose.Cells.dll">
+      <publishTime>08/07/2024 05:59:32</publishTime>
+    </File>
+    <File Include="Azure.Core.dll">
+      <publishTime>09/07/2023 12:50:30</publishTime>
+    </File>
+    <File Include="Azure.Identity.dll">
+      <publishTime>10/18/2023 14:59:42</publishTime>
+    </File>
+    <File Include="EPPlus.dll">
+      <publishTime>07/24/2024 09:13:26</publishTime>
+    </File>
+    <File Include="EPPlus.Interfaces.dll">
+      <publishTime>11/21/2022 07:51:04</publishTime>
+    </File>
+    <File Include="EPPlus.System.Drawing.dll">
+      <publishTime>11/21/2022 07:51:06</publishTime>
+    </File>
+    <File Include="Microsoft.Bcl.AsyncInterfaces.dll">
+      <publishTime>10/22/2021 18:47:36</publishTime>
+    </File>
+    <File Include="Microsoft.Data.SqlClient.dll">
+      <publishTime>01/26/2024 21:49:44</publishTime>
+    </File>
+    <File Include="Microsoft.EntityFrameworkCore.Abstractions.dll">
+      <publishTime>03/19/2024 18:34:10</publishTime>
+    </File>
+    <File Include="Microsoft.EntityFrameworkCore.dll">
+      <publishTime>03/19/2024 18:34:48</publishTime>
+    </File>
+    <File Include="Microsoft.EntityFrameworkCore.Relational.dll">
+      <publishTime>03/19/2024 18:35:40</publishTime>
+    </File>
+    <File Include="Microsoft.EntityFrameworkCore.SqlServer.dll">
+      <publishTime>03/19/2024 18:35:48</publishTime>
+    </File>
+    <File Include="Microsoft.Identity.Client.dll">
+      <publishTime>09/05/2023 13:25:28</publishTime>
+    </File>
+    <File Include="Microsoft.Identity.Client.Extensions.Msal.dll">
+      <publishTime>09/05/2023 13:31:58</publishTime>
+    </File>
+    <File Include="Microsoft.IdentityModel.Abstractions.dll">
+      <publishTime>11/30/2023 23:56:56</publishTime>
+    </File>
+    <File Include="Microsoft.IdentityModel.JsonWebTokens.dll">
+      <publishTime>11/30/2023 23:34:00</publishTime>
+    </File>
+    <File Include="Microsoft.IdentityModel.Logging.dll">
+      <publishTime>11/30/2023 23:35:22</publishTime>
+    </File>
+    <File Include="Microsoft.IdentityModel.Protocols.dll">
+      <publishTime>11/30/2023 23:37:28</publishTime>
+    </File>
+    <File Include="Microsoft.IdentityModel.Protocols.OpenIdConnect.dll">
+      <publishTime>11/30/2023 23:48:08</publishTime>
+    </File>
+    <File Include="Microsoft.IdentityModel.Tokens.dll">
+      <publishTime>11/30/2023 23:41:50</publishTime>
+    </File>
+    <File Include="Microsoft.IO.RecyclableMemoryStream.dll">
+      <publishTime>12/11/2023 16:53:28</publishTime>
+    </File>
+    <File Include="Microsoft.SqlServer.Server.dll">
+      <publishTime>01/27/2022 12:19:08</publishTime>
+    </File>
+    <File Include="Microsoft.Win32.SystemEvents.dll">
+      <publishTime>10/18/2022 11:16:52</publishTime>
+    </File>
+    <File Include="runtimes/osx/native/libSkiaSharp.dylib">
+      <publishTime>09/20/2023 12:43:42</publishTime>
+    </File>
+    <File Include="runtimes/unix/lib/net6.0/Microsoft.Data.SqlClient.dll">
+      <publishTime>01/26/2024 21:49:42</publishTime>
+    </File>
+    <File Include="runtimes/unix/lib/net6.0/System.Drawing.Common.dll">
+      <publishTime>10/22/2021 18:51:42</publishTime>
+    </File>
+    <File Include="runtimes/win-arm/native/Microsoft.Data.SqlClient.SNI.dll">
+      <publishTime>08/11/2023 13:56:28</publishTime>
+    </File>
+    <File Include="runtimes/win-arm64/native/libSkiaSharp.dll">
+      <publishTime>09/20/2023 13:11:38</publishTime>
+    </File>
+    <File Include="runtimes/win-arm64/native/Microsoft.Data.SqlClient.SNI.dll">
+      <publishTime>08/11/2023 13:56:28</publishTime>
+    </File>
+    <File Include="runtimes/win-x64/native/libSkiaSharp.dll">
+      <publishTime>09/20/2023 13:11:38</publishTime>
+    </File>
+    <File Include="runtimes/win-x64/native/Microsoft.Data.SqlClient.SNI.dll">
+      <publishTime>08/11/2023 13:56:18</publishTime>
+    </File>
+    <File Include="runtimes/win-x86/native/libSkiaSharp.dll">
+      <publishTime>09/20/2023 13:11:10</publishTime>
+    </File>
+    <File Include="runtimes/win-x86/native/Microsoft.Data.SqlClient.SNI.dll">
+      <publishTime>08/11/2023 13:56:18</publishTime>
+    </File>
+    <File Include="runtimes/win/lib/net6.0/Microsoft.Data.SqlClient.dll">
+      <publishTime>01/26/2024 21:49:42</publishTime>
+    </File>
+    <File Include="runtimes/win/lib/net6.0/Microsoft.Win32.SystemEvents.dll">
+      <publishTime>10/22/2021 18:40:18</publishTime>
+    </File>
+    <File Include="runtimes/win/lib/net6.0/System.Drawing.Common.dll">
+      <publishTime>10/22/2021 18:48:10</publishTime>
+    </File>
+    <File Include="runtimes/win/lib/net6.0/System.Runtime.Caching.dll">
+      <publishTime>10/22/2021 18:52:44</publishTime>
+    </File>
+    <File Include="runtimes/win/lib/net6.0/System.Security.Cryptography.ProtectedData.dll">
+      <publishTime>10/22/2021 18:51:04</publishTime>
+    </File>
+    <File Include="runtimes/win/lib/net6.0/System.Windows.Extensions.dll">
+      <publishTime>10/22/2021 18:49:58</publishTime>
+    </File>
+    <File Include="runtimes/win/lib/net7.0/Microsoft.Win32.SystemEvents.dll">
+      <publishTime>10/18/2022 11:17:28</publishTime>
+    </File>
+    <File Include="runtimes/win/lib/net7.0/System.Drawing.Common.dll">
+      <publishTime>10/18/2022 11:17:44</publishTime>
+    </File>
+    <File Include="SistemaWebMedida.deps.json">
+      <publishTime>09/17/2024 21:31:19</publishTime>
+    </File>
+    <File Include="SistemaWebMedida.dll">
+      <publishTime>09/17/2024 21:31:14</publishTime>
+    </File>
+    <File Include="SistemaWebMedida.exe">
+      <publishTime>09/17/2024 21:31:14</publishTime>
+    </File>
+    <File Include="SistemaWebMedida.pdb">
+      <publishTime>09/17/2024 21:31:14</publishTime>
+    </File>
+    <File Include="SistemaWebMedida.runtimeconfig.json">
+      <publishTime>09/17/2024 21:31:15</publishTime>
+    </File>
+    <File Include="SkiaSharp.dll">
+      <publishTime>09/20/2023 13:11:34</publishTime>
+    </File>
+    <File Include="System.Configuration.ConfigurationManager.dll">
+      <publishTime>08/19/2022 14:58:02</publishTime>
+    </File>
+    <File Include="System.Drawing.Common.dll">
+      <publishTime>10/18/2022 11:17:04</publishTime>
+    </File>
+    <File Include="System.IdentityModel.Tokens.Jwt.dll">
+      <publishTime>11/30/2023 23:31:48</publishTime>
+    </File>
+    <File Include="System.Memory.Data.dll">
+      <publishTime>04/08/2021 11:45:54</publishTime>
+    </File>
+    <File Include="System.Runtime.Caching.dll">
+      <publishTime>10/22/2021 18:52:02</publishTime>
+    </File>
+    <File Include="System.Security.Cryptography.ProtectedData.dll">
+      <publishTime>10/22/2021 18:51:04</publishTime>
+    </File>
+    <File Include="System.Security.Permissions.dll">
+      <publishTime>10/22/2021 18:49:50</publishTime>
+    </File>
+    <File Include="System.Windows.Extensions.dll">
+      <publishTime>10/22/2021 18:49:44</publishTime>
+    </File>
+    <File Include="web.config">
+      <publishTime>09/17/2024 21:31:19</publishTime>
+    </File>
+    <File Include="wwwroot/css/site.css">
+      <publishTime>08/05/2024 20:20:49</publishTime>
+    </File>
+    <File Include="wwwroot/favicon.ico">
+      <publishTime>08/05/2024 20:20:49</publishTime>
+    </File>
+    <File Include="wwwroot/Imagenes/ImagenFondo.jpeg">
+      <publishTime>08/12/2024 21:23:16</publishTime>
+    </File>
+    <File Include="wwwroot/js/site.js">
+      <publishTime>08/05/2024 20:20:49</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/css/bootstrap-grid.css">
+      <publishTime>08/05/2024 20:20:49</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/css/bootstrap-grid.css.map">
+      <publishTime>08/05/2024 20:20:49</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/css/bootstrap-grid.min.css">
+      <publishTime>08/05/2024 20:20:49</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/css/bootstrap-grid.min.css.map">
+      <publishTime>08/05/2024 20:20:49</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/css/bootstrap-grid.rtl.css">
+      <publishTime>08/05/2024 20:20:49</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/css/bootstrap-grid.rtl.css.map">
+      <publishTime>08/05/2024 20:20:49</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/css/bootstrap-grid.rtl.min.css">
+      <publishTime>08/05/2024 20:20:49</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/css/bootstrap-grid.rtl.min.css.map">
+      <publishTime>08/05/2024 20:20:49</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.css">
+      <publishTime>08/05/2024 20:20:49</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.css.map">
+      <publishTime>08/05/2024 20:20:49</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.min.css">
+      <publishTime>08/05/2024 20:20:49</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.min.css.map">
+      <publishTime>08/05/2024 20:20:49</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.rtl.css">
+      <publishTime>08/05/2024 20:20:49</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.rtl.css.map">
+      <publishTime>08/05/2024 20:20:49</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.rtl.min.css">
+      <publishTime>08/05/2024 20:20:49</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.rtl.min.css.map">
+      <publishTime>08/05/2024 20:20:49</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.css">
+      <publishTime>08/05/2024 20:20:49</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.css.map">
+      <publishTime>08/05/2024 20:20:49</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.min.css">
+      <publishTime>08/05/2024 20:20:49</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.min.css.map">
+      <publishTime>08/05/2024 20:20:49</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.rtl.css">
+      <publishTime>08/05/2024 20:20:49</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.rtl.css.map">
+      <publishTime>08/05/2024 20:20:49</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.rtl.min.css">
+      <publishTime>08/05/2024 20:20:49</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.rtl.min.css.map">
+      <publishTime>08/05/2024 20:20:49</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/css/bootstrap.css">
+      <publishTime>08/05/2024 20:20:49</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/css/bootstrap.css.map">
+      <publishTime>08/05/2024 20:20:49</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/css/bootstrap.min.css">
+      <publishTime>08/05/2024 20:20:49</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/css/bootstrap.min.css.map">
+      <publishTime>08/05/2024 20:20:49</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/css/bootstrap.rtl.css">
+      <publishTime>08/05/2024 20:20:49</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/css/bootstrap.rtl.css.map">
+      <publishTime>08/05/2024 20:20:49</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/css/bootstrap.rtl.min.css">
+      <publishTime>08/05/2024 20:20:49</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/css/bootstrap.rtl.min.css.map">
+      <publishTime>08/05/2024 20:20:49</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.js">
+      <publishTime>08/05/2024 20:20:49</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.js.map">
+      <publishTime>08/05/2024 20:20:49</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.min.js">
+      <publishTime>08/05/2024 20:20:49</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map">
+      <publishTime>08/05/2024 20:20:49</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/js/bootstrap.esm.js">
+      <publishTime>08/05/2024 20:20:49</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/js/bootstrap.esm.js.map">
+      <publishTime>08/05/2024 20:20:49</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/js/bootstrap.esm.min.js">
+      <publishTime>08/05/2024 20:20:49</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/js/bootstrap.esm.min.js.map">
+      <publishTime>08/05/2024 20:20:49</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/js/bootstrap.js">
+      <publishTime>08/05/2024 20:20:49</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/js/bootstrap.js.map">
+      <publishTime>08/05/2024 20:20:49</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/js/bootstrap.min.js">
+      <publishTime>08/05/2024 20:20:49</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/js/bootstrap.min.js.map">
+      <publishTime>08/05/2024 20:20:49</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/LICENSE">
+      <publishTime>08/05/2024 20:20:49</publishTime>
+    </File>
+    <File Include="wwwroot/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js">
+      <publishTime>08/05/2024 20:20:49</publishTime>
+    </File>
+    <File Include="wwwroot/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js">
+      <publishTime>08/05/2024 20:20:49</publishTime>
+    </File>
+    <File Include="wwwroot/lib/jquery-validation-unobtrusive/LICENSE.txt">
+      <publishTime>08/05/2024 20:20:49</publishTime>
+    </File>
+    <File Include="wwwroot/lib/jquery-validation/dist/additional-methods.js">
+      <publishTime>08/05/2024 20:20:49</publishTime>
+    </File>
+    <File Include="wwwroot/lib/jquery-validation/dist/additional-methods.min.js">
+      <publishTime>08/05/2024 20:20:49</publishTime>
+    </File>
+    <File Include="wwwroot/lib/jquery-validation/dist/jquery.validate.js">
+      <publishTime>08/05/2024 20:20:49</publishTime>
+    </File>
+    <File Include="wwwroot/lib/jquery-validation/dist/jquery.validate.min.js">
+      <publishTime>08/05/2024 20:20:49</publishTime>
+    </File>
+    <File Include="wwwroot/lib/jquery-validation/LICENSE.md">
+      <publishTime>08/05/2024 20:20:49</publishTime>
+    </File>
+    <File Include="wwwroot/lib/jquery/dist/jquery.js">
+      <publishTime>08/05/2024 20:20:49</publishTime>
+    </File>
+    <File Include="wwwroot/lib/jquery/dist/jquery.min.js">
+      <publishTime>08/05/2024 20:20:49</publishTime>
+    </File>
+    <File Include="wwwroot/lib/jquery/dist/jquery.min.map">
+      <publishTime>08/05/2024 20:20:49</publishTime>
+    </File>
+    <File Include="wwwroot/lib/jquery/LICENSE.txt">
+      <publishTime>08/05/2024 20:20:49</publishTime>
+    </File>
+    <File Include="wwwroot/SistemaWebMedida.styles.css">
+      <publishTime>08/12/2024 20:18:59</publishTime>
+    </File>
+  </ItemGroup>
+</Project>
